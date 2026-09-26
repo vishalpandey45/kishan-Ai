@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>krishi AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="settingsModal" class="settings-modal">
+
+    <div class="settings-box">
+
+        <h2>⚙️ AI Settings</h2>
+
+        <label>AI Mode</label>
+
+        <select id="aiMode">
+
+            <option value="normal">Normal Mode</option>
+
+            <option value="coding">Coding Mode</option>
+
+            <option value="teacher">Teacher Mode</option>
+
+            <option value="hindi">Hindi Mode</option>
+
+        </select>
+
+        <button onclick="saveSettings()">
+            Save
+        </button>
+
+    </div>
+
+</div>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+   <div class="sidebar">
+
+    <button
+        class="export-btn"
+        onclick="exportPDF()">
+        📄 PDF
+    </button>
+
+    <button
+        id="newChatBtn"
+        class="new-chat-btn"
+        onclick="newChat()">
+        + New Chat
+    </button>
+
+    <button
+    class="settings-btn"
+    onclick="openSettings()">
+    ⚙️ Settings
+</button>
+
+
+    <input
+    
+        type="text"
+        id="chatSearch"
+        class="chat-search"
+        placeholder="🔍 Search chats..."
+    >
+    <div class="version">
+KISHAN AI v1.0
+</div>
+
+    <div
+        class="chat-list"
+        id="chatList">
+    </div>
+
+</div>
+
+
+    <!-- MAIN CHAT -->
+    <div class="chat-container">
+
+       <div class="header">
+
+    <div class="logo-header">
+
+        <img src="KISHAN AI.png" alt="KISHAN AI" class="logo">
+        
+
+        <div>
+            <h1>KISHAN AI</h1>
+            <p>
+                <span class="status-dot"></span>
+                Online • Powered by dr mirdula team
+            </p>
+        </div>
+
+    </div>
+
+    <button
+        id="themeBtn"
+        onclick="toggleTheme()">
+        🌙
+    </button>
+    
+    <button id="menuBtn" onclick="toggleSidebar()">
+☰
+</button>
+
+</div>
+
+
+        <div id="chat-box"></div>
+        <div id="welcomeScreen" class="welcome-screen">
+
+    <img src="KISHAN AI.png" class="welcome-logo">
+
+    <h1>Welcome to KISHAN AI 🌾</h1>
+
+    <div class="welcome-content">
+
+        <p>
+            Smart Farming Assistant powered by AI
+        </p>
+
+        <div class="welcome-tagline">
+            Grow • Learn • Protect • Prosper
+        </div>
+
+        <div class="suggestion-cards">
+
+            <div class="suggestion-card"
+                 onclick="quickPrompt('How to increase wheat production?')">
+                🌾 Crop Help
+            </div>
+
+            <div class="suggestion-card"
+                 onclick="quickPrompt('Weather forecast for farming')">
+                ☁️ Weather
+            </div>
+
+            <div class="suggestion-card"
+                 onclick="quickPrompt('Best fertilizer for rice')">
+                🧪 Fertilizer
+            </div>
+
+            <div class="suggestion-card"
+                 onclick="quickPrompt('Ask me anything')">
+                🤖 Ask Anything
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+        <div class="input-area">
+
+    <input
+        type="file"
+        id="fileInput"
+        accept="image/*,.pdf"
+        hidden
+    >
+
+    <button
+        id="uploadBtn"
+        onclick="document.getElementById('fileInput').click()">
+        🗃️
+    </button>
+
+    <input
+        type="text"
+        id="userInput"
+        placeholder="Ask me anything..."
+    >
+
+    <button
+        id="micBtn"
+        onclick="startListening()">
+        🎤
+    </button>
+
+    <button
+        id="sendBtn"
+        onclick="sendMessage()">
+        Send
+    </button>
+
+    <button onclick="speakText(lastReply)">
+        🔊
+    </button>
+
+</div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
